@@ -1,0 +1,57 @@
+# twrp.flags for mt6762
+
+# mount-point 				fstype 	device 					  			flags
+
+## SUPER Partition
+
+/system	 					ext4	/dev/block/mapper/system          flags=backup=1;flashimg=1;slotselect;display="system_img"
+/product 					ext4	/dev/block/mapper/product         flags=backup=1;flashimg=1;slotselect;display="product_img"
+/vendor 					ext4 	/dev/block/mapper/vendor          flags=backup=1;flashimg=1;slotselect;display="vendor_img"
+
+## Userdata
+
+/data 						ext4 	/dev/block/by-name/userdata 		noatime,nosuid,nodev,noauto_da_alloc,errors=panic,inlinecrypt latemount,wait,check,quota,reservedsize=128M,formattable,resize,checkpoint=block,fileencryption=aes-256-xts:aes-256-cts:v2,keydirectory=/metadata/vold/metadata_encryption
+
+## Metadata (encryption)
+
+/metadata					ext4	/dev/block/by-name/md_udc 			ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
+#/metadata 		 			emmc	/dev/block/by-name/metadata 		# not mounted - unused raw partition 	
+
+## A/B Partitions
+
+/boot 						emmc	/dev/block/by-name/boot 		 	flags=backup=1;flashimg=1;slotselect;display="boot"
+/dtbo 						emmc	/dev/block/by-name/dtbo 		 	flags=backup=1;flashimg=1;slotselect;display="dtbo"
+/gz 						emmc	/dev/block/by-name/gz 			 	flags=backup=1;flashimg=1;slotselect;display="gz"
+/lk 						emmc	/dev/block/by-name/lk 				flags=backup=1;flashimg=1;slotselect;display="lk"
+/init_boot					emmc 	/dev/block/by-name/init_boot 		flags=backup=1;flashimg=1;slotselect;display="init_boot"
+/md1img 					emmc	/dev/block/by-name/md1img 			flags=backup=1;flashimg=1;slotselect;display="md1img"
+/scp 						emmc	/dev/block/by-name/scp 	 		 	flags=backup=1;flashimg=1;slotselect;display="scp"
+/spmfw 						emmc	/dev/block/by-name/spmfw 		 	flags=backup=1;flashimg=1;slotselect;display="spmfw"
+/sspm 	 					emmc	/dev/block/by-name/sspm 		 	flags=backup=1;flashimg=1;slotselect;display="sspm"
+/tee 						emmc 	/dev/block/by-name/tee  			flags=backup=1;flashimg=1;slotselect;display="tee"
+/vbmeta 					emmc	/dev/block/by-name/vbmeta 			flags=backup=1;flashimg=1;slotselect;display="vbmeta"
+/vbmeta_system 				emmc	/dev/block/by-name/vbmeta_system 	flags=backup=1;flashimg=1;slotselect;display="vbmeta_system"
+/vbmeta_vendor 				emmc	/dev/block/by-name/vbmeta_vendor 	flags=backup=1;flashimg=1;slotselect;display="vbmeta_vendor"
+
+# Single Partitons
+
+/boot_para					emmc	/dev/block/by-name/boot_para 	 	flags=backup=1;display="boot_para"
+/expdb 						emmc 	/dev/block/by-name/expdb 			flags=backup=1;wipeingui;display="expdb"
+/flashinfo					emmc	/dev/block/by-name/flashinfo		flags=backup=1;display="flashinfo"
+/frp 						emmc	/dev/block/by-name/frp 				flags=backup=1;display="frp"
+/logo 						emmc	/dev/block/by-name/logo 		 	flags=backup=1;flashimg=1;display="logo"
+/nvcfg 						ext4	/dev/block/by-name/nvcfg 			flags=backup=1;display="nvcfg"
+/nvdata 					ext4	/dev/block/by-name/nvdata 			flags=backup=1;display="nvdata"
+/nvram 						emmc	/dev/block/by-name/nvram 		 	flags=backup=1;display="nvram"
+/otp 						emmc	/dev/block/by-name/otp 				flags=backup=1;display="otp"
+/para 						emmc	/dev/block/by-name/para 			flags=backup=1;display="para"
+# /persist 					ext4 	/dev/block/by-name/persist 			flags=backup=1;display="persist"
+/proinfo 					emmc 	/dev/block/by-name/proinfo 			flags=backup=1;display="proinfo"
+/protect1					ext4	/dev/block/by-name/protect1			flags=backup=1;display="protect1"
+/protect2					ext4	/dev/block/by-name/protect2			flags=backup=1;display="protect2"
+/sec1 						emmc	/dev/block/by-name/sec1 		 	flags=backup=1;display="sec1"
+/seccfg						emmc	/dev/block/by-name/seccfg			flags=display="seccfg"
+
+# OTG / SDcard
+# auto auto defaults				/devices/platform/externdevice* 	voldmanaged=sdcard1:auto,encryptable=userdata
+# auto vfat							/devices/platform/mt_usb* 			defaults voldmanaged=usbotg:auto

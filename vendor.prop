@@ -1,0 +1,30 @@
+# Device Identification
+ro.build.product=Digitnext_Ultra
+ro.product.brand=Digit
+ro.product.device=Digitnext_Ultra
+ro.product.manufacturer=Digit
+ro.product.model=Digitnext_Ultra
+ro.product.name=Digitnext_Ultra
+
+# Platform/Hardware
+ro.board.platform=mt6765
+ro.boot.hardware=mt6762
+ro.hardware=mt6762
+ro.mediatek.platform=MT6765
+ro.product.board=k62v1_64_bsp
+ro.soc.manufacturer=Mediatek
+ro.soc.model=MT6762
+
+# Encryption
+ro.crypto.volume.filenames_mode=aes-256-cts
+
+# Decryption : Keymaster/Gatekeeper
+ro.hardware.gatekeeper=beanpod
+ro.hardware.kmsetkey=beanpod
+# Note: ro.hardware.keystore is missing, using ro.hardware instead
+
+# TEE/Trustzone
+ro.vendor.mtk_microtrust_tee_support=1
+
+# Vendor Based
+ro.vendor.mediatek.platform=MT6765
