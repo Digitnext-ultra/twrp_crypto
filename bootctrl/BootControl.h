@@ -52,7 +52,7 @@ class BootControl : public IBootControl {
     Return<bool> setSnapshotMergeStatus(MergeStatus status) override;
     Return<MergeStatus> getSnapshotMergeStatus() override;
 
-    // Methods from ::android::hardware::boot::V1_2::IBootControl follow.
+        // Methods from ::android::hardware::boot::V1_2::IBootControl follow.
     Return<uint32_t> getActiveBootSlot() override;
   private:
     android::bootable::BootControl impl_;

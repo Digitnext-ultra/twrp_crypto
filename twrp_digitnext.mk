@@ -28,5 +28,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 PRODUCT_DEVICE := digitnext
 PRODUCT_NAME := twrp_digitnext
 PRODUCT_MODEL := digitnext
+PRODUCT_BRAND := Digit
 PRODUCT_MANUFACTURER := Digit
 PRODUCT_GMS_CLIENTID_BASE := android-digit
