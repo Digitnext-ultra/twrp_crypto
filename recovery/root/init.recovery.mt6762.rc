@@ -1,13 +1,21 @@
 import /init.microtrust.rc
+import /mtk-plpath-utils.rc
 
 on init
+    # Create a more standard /dev/block layout for our scripts
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
 
-on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+on fs
+    mkdir /mnt/vendor/persist 0771 root root
+    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist
+
     install_keyring
+    setprop crypto.ready 1
 
 service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    class hal
     user root
     group root
     disabled
@@ -16,32 +24,36 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
 service vendor.keymaster-4-1-beanpod /vendor/bin/hw/android.hardware.keymaster@4.1-service.beanpod
     interface android.hardware.keymaster@4.0::IKeymasterDevice default
     interface android.hardware.keymaster@4.1::IKeymasterDevice default
+    class early_hal
     user root
     group root drmrpc
-    oneshot    
     disabled
     seclabel u:r:recovery:s0
 
 on property:vendor.sys.listener.registered=true
     start vendor.gatekeeper-1-0
+    start vendor.keymaster-4-1-beanpod
+
+on property:crypto.ready=1
+    start vendor.keymaster-4-1-beanpod
 
 on property:hwservicemanager.ready=true
-    start vendor.keymaster-4-1-beanpod 
+    start vendor.keymaster-4-1-beanpod
     start vendor.gatekeeper-1-0
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
-    stop vendor.keymaster-4-1-beanpod 
-    stop vendor.gatekeeper-1-0
-    
-on property:ro.crypto.state=unencrypted
-    stop teei_daemon    
     stop vendor.keymaster-4-1-beanpod
     stop vendor.gatekeeper-1-0
-        
-on property:twrp.all.users.decrypted=true
+
+on property:ro.crypto.state=unencrypted
     stop teei_daemon
-    stop vendor.keymaster-4-1-beanpod 
+    stop vendor.keymaster-4-1-beanpod
+    stop vendor.gatekeeper-1-0
+
+on property:twrp.decrypt.done=true
+    stop teei_daemon
+    stop vendor.keymaster-4-1-beanpod
     stop vendor.gatekeeper-1-0
 
 on boot

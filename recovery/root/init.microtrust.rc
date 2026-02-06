@@ -25,6 +25,7 @@ service teei_daemon /vendor/bin/teei_daemon \
     group root
     disabled
     seclabel u:r:recovery:s0
+    # oneshot
 
 on boot
     chown system system /sys/bus/platform/devices/utos/dcih_notify_test
@@ -235,7 +236,3 @@ on fs
 
 on property:vendor.crypto.fake_encrypt=1 && property:vold.post_fs_data_done=1
     setprop vendor.soter.teei.crypto.state unencrypted
-
-on post-fs-data
-    setprop vendor.soter.teei.logini "start"
-

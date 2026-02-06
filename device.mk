@@ -5,10 +5,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/digit/Digitnext_Ultra
+LOCAL_PATH := device/digit/digitnext
 
 # API
-# PRODUCT_SHIPPING_API_LEVEL := 33      # Reason BOARD_SYSTEMSDK_VERSIONS must be ≥ PRODUCT_SHIPPING_API_LEVEL
+PRODUCT_SHIPPING_API_LEVEL := 31
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 31
@@ -24,6 +24,7 @@ AB_OTA_PARTITIONS += \
     init_boot \
     dtbo \
     system \
+    system_ext \
     product \
     vendor \
     vbmeta \
@@ -73,8 +74,8 @@ PRODUCT_PACKAGES += \
     mtk_plpath_utils.recovery
 
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-impl \
-    android.hardware.health@2.0-service
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
@@ -83,15 +84,8 @@ PRODUCT_SOONG_NAMESPACES += \
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
-    libkeymaster41 \
-    libpuresoftkeymasterdevice
+    libkeymaster41
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
-
-
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0.vendor
-
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so
