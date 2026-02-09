@@ -1,0 +1,144 @@
+Starting TWRP 3.7.1_12-by inscrutable-5c3d206a on Fri Feb  6 06:24:18 2026
+ (pid 350)
+I:Lun file '/config/usb_gadget/g1/functions/mass_storage.usb0/lun.0/file'
+TW_INCLUDE_FASTBOOTD := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+TW_INCLUDE_CRYPTO := true
+I:TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+I:Found brightness file at '/sys/class/leds/lcd-backlight/brightness'
+I:TWFunc::Set_Brightness: Setting brightness control to 150
+I:TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+I:LANG: en
+I:AB_OTA_UPDATER := true
+boot command: bootonce-bootloader
+I:Startup Commands: 
+=> Linking mtab
+=> Processing /etc/recovery.fstab
+I:Reading /etc/twrp.flags
+I:Reading /etc/recovery.fstab
+I:Processing '/system'
+I:Created '/system_root' folder.
+I:Trying to prepare system from super partition
+I:Symlinking /dev/block/dm-1 => /dev/block/bootdevice/by-name/system 
+I:Processing '/system_ext'
+I:Trying to prepare system_ext from super partition
+I:unable to update logical partition: /system_ext
+I:Processing '/vendor'
+I:Trying to prepare vendor from super partition
+I:Symlinking /dev/block/dm-3 => /dev/block/bootdevice/by-name/vendor 
+I:Processing '/product'
+I:Trying to prepare product from super partition
+I:Symlinking /dev/block/dm-0 => /dev/block/bootdevice/by-name/product 
+I:Processing '/metadata'
+I:Unhandled flag: 'first_stage_mount'
+I:Processing '/data'
+I:Unhandled flag: 'latemount'
+I:Unhandled flag: 'reservedsize=128M'
+I:Unhandled flag: 'checkpoint=block'
+I:FBE contents 'aes-256-xts', filenames 'aes-256-cts:v2'
+I:setting Key_Directory to: /metadata/vold/metadata_encryption
+I:Processing '/misc'
+I:Processing '/boot'
+I:Unhandled flag: 'first_stage_mount'
+I:Unhandled flag: 'nofail'
+I:Processing remaining twrp.flags
+I:Processing '/dtbo'
+I:Processing '/expdb'
+I:Processing '/external_sd'
+I:Created '/external_sd' folder.
+I:Processing '/gz1'
+I:Processing '/gz2'
+I:Processing '/lk'
+I:Processing '/lk2'
+I:Processing '/logo'
+I:Processing '/nvcfg'
+I:Created '/nvcfg' folder.
+I:Processing '/nvdata'
+I:Created '/nvdata' folder.
+I:Processing '/nvram'
+I:Processing '/otp'
+I:Processing '/persist'
+I:Created '/persist' folder.
+I:Processing '/persistent'
+I:Processing '/product_image'
+I:Processing '/proinfo'
+I:Processing '/protect_f'
+I:Created '/protect_f' folder.
+I:Processing '/protect_s'
+I:Created '/protect_s' folder.
+I:Processing '/scp1'
+I:Processing '/scp2'
+I:Processing '/seccfg'
+I:Processing '/spmfw'
+I:Processing '/system_ext_image'
+I:Processing '/system_image'
+I:Processing '/tee1'
+I:Processing '/tee2'
+I:Processing '/tkv'
+I:Processing '/usb-otg'
+I:Created '/usb-otg' folder.
+I:Processing '/vbmeta'
+I:Processing '/vbmeta_system'
+I:Processing '/vbmeta_vendor'
+I:Processing '/vendor_image'
+I:Setting 'external_storage.casefold.enabled' to '1' from /vendor/build.prop
+I:Setting 'external_storage.sdcardfs.enabled' to '0' from /vendor/build.prop
+I:GetFstabPath: /odm/etc/fstab.mt6762
+I:GetFstabPath: /vendor/etc/fstab.mt6762
+I:Fstab: /vendor/etc/fstab.mt6762
+I:Reading /etc/additional.fstab
+I:Processing '/metadata'
+I:Unhandled flag: 'first_stage_mount'
+I:Processing '/data'
+I:Unhandled flag: 'latemount'
+I:Unhandled flag: 'reservedsize=128M'
+I:Unhandled flag: 'checkpoint=block'
+I:FBE contents 'aes-256-xts', filenames 'aes-256-cts:v2'
+I:setting Key_Directory to: /metadata/vold/metadata_encryption
+I:Done processing fstab files
+I:Property ro.boot.product.vendor.sku not found, trying to get vintf manifest file name from ro.board.platform
+I:Separate manifest doesn't exist for 'android.hardware.keymaster'
+I:/vendor/etc/vintf/manifest_mt6762.xml not found. Using default path for manifest.xml
+I:PageManager::LoadFileToBuffer loading filename: '/vendor/etc/vintf/manifest.xml' directly
+I:Looking for 'android.hardware.keymaster' service in manifest
+I:Found version in manifest: 4.1
+I:Keymaster_Ver::Using keymaster version '4.x' for decryption
+Starting the UI...
+Skipping adf graphics -- not present in build tree
+cannot find/open a drm device: No such file or directory
+fb0 reports (possibly inaccurate):
+  vi.bits_per_pixel = 32
+  vi.red.offset   =   0   .length =   8
+  vi.green.offset =   8   .length =   8
+  vi.blue.offset  =  16   .length =   8
+setting GGL_PIXEL_FORMAT_RGBA_8888
+double buffered
+RECOVERY_BGRA
+framebuffer: 3 (720 x 1600)
+Using fbdev graphics.
+I:TWFunc::Set_Brightness: Setting brightness control to 150
+TW_SCREEN_BLANK_ON_BOOT := true
+I:TWFunc::Set_Brightness: Setting brightness control to 0
+I:TWFunc::Set_Brightness: Setting brightness control to 150
+I:Loading package: splash (/twres/splash.xml)
+I:Load XML directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/splash.xml' directly
+I:Checking resolution...
+I:Scaling theme width 0.666667x and height 0.833333x, offsets x: 0 y: 0 w: 0 h: 0
+I:Loading resources...
+I:Loading variables...
+I:Loading mouse cursor...
+I:Loading pages...
+I:Loading page splash
+I:Switching packages (splash)
+I:Can't probe device /dev/block/mmcblk0p44
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/mmcblk0p44', current file system: 'ext4'
+I:Apex is disabled in this build
+I:Using automatic handling for /data/media emulated storage device.
+I:Setting up '/data' as data/media emulated storage.
+I:Can't probe device /dev/block/mmcblk0p44
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/mmcblk0p44', current file system: 'ext4'
+I:Backup folder set to '/data/media/TWRP/BACKUPS/6DSOVW5HQ49D9DZ5'
+Using additional fstab for decryption /etc/additional.fstab 

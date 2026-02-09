@@ -63,7 +63,7 @@ class BootControl : public IBootControl {
 extern "C" IBootControl* HIDL_FETCH_IBootControl(const char* name);
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_2
 }  // namespace boot
 }  // namespace hardware
 }  // namespace android

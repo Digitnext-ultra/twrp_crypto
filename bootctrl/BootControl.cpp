@@ -142,6 +142,10 @@ Return<MergeStatus> BootControl::getSnapshotMergeStatus() {
     return impl_.GetSnapshotMergeStatus();
 }
 
+Return<uint32_t> BootControl::getActiveBootSlot() {
+    return impl_.GetActiveBootSlot();
+}
+
 IBootControl* HIDL_FETCH_IBootControl(const char* /* hal */) {
     auto module = std::make_unique<BootControl>();
     if (!module->Init()) {
@@ -152,7 +156,7 @@ IBootControl* HIDL_FETCH_IBootControl(const char* /* hal */) {
 }
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_2
 }  // namespace boot
 }  // namespace hardware
 }  // namespace android
